@@ -1,0 +1,40 @@
+package org.slimecraft.eventi;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
+
+public final class EventListener<T> {
+    private Class<T> clazz;
+    private final List<Consumer<T>> handlers;
+    private final List<Predicate<T>> filters;
+
+    public EventListener(Class<T> clazz) {
+        this.clazz = clazz;
+        handlers = new ArrayList<>();
+        filters = new ArrayList<>();
+    }
+
+    public void addHandler(Consumer<T> handler) {
+        handlers.add(handler);
+    }
+
+    public List<Consumer<T>> getHandlers() {
+        return handlers;
+    }
+
+    public void addFilter(Predicate<T> filter) {
+        filters.add(filter);
+    }
+
+    public List<Predicate<T>> getFilters() {
+        return filters;
+    }
+
+    public Class<T> getClazz() {
+        return clazz;
+    }
+}
