@@ -64,7 +64,7 @@ public final class EventNode {
         return builder;
     }
 
-    public <T> void addListener(EventListener<T> listener) {
+    public <T> void addListener(@NotNull EventListener<T> listener) {
         listeners.add(listener);
     }
 }
