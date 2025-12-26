@@ -18,7 +18,7 @@ import java.util.function.Predicate;
  * @param <T> The type to listen to.
  */
 public final class EventListener<T> {
-    private Class<T> clazz;
+    private final Class<T> clazz;
     private final List<Consumer<T>> handlers;
     private final List<Predicate<T>> filters;
 
