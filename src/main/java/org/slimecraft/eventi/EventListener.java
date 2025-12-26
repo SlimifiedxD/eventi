@@ -1,5 +1,7 @@
 package org.slimecraft.eventi;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -20,29 +22,29 @@ public final class EventListener<T> {
     private final List<Consumer<T>> handlers;
     private final List<Predicate<T>> filters;
 
-    public EventListener(Class<T> clazz) {
+    public EventListener(@NotNull Class<T> clazz) {
         this.clazz = clazz;
         handlers = new ArrayList<>();
         filters = new ArrayList<>();
     }
 
-    public void addHandler(Consumer<T> handler) {
+    public void addHandler(@NotNull Consumer<T> handler) {
         handlers.add(handler);
     }
 
-    public List<Consumer<T>> getHandlers() {
+    public @NotNull List<Consumer<T>> getHandlers() {
         return handlers;
     }
 
-    public void addFilter(Predicate<T> filter) {
+    public void addFilter(@NotNull Predicate<T> filter) {
         filters.add(filter);
     }
 
-    public List<Predicate<T>> getFilters() {
+    public @NotNull List<Predicate<T>> getFilters() {
         return filters;
     }
 
-    public Class<T> getClazz() {
+    public @NotNull Class<T> getClazz() {
         return clazz;
     }
 }

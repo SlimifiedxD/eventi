@@ -1,6 +1,6 @@
 package org.slimecraft.eventi;
 
-import io.github.classgraph.*;
+import org.jetbrains.annotations.NotNull;
 import org.slimecraft.eventi.annotation.Listener;
 
 import java.lang.reflect.InvocationTargetException;
@@ -26,11 +26,11 @@ public final class EventNode {
         listenerMethods = new HashMap<>();
     }
 
-    public static EventNode global() {
+    public @NotNull static EventNode global() {
         return Global.INSTANCE;
     }
 
-    public void addListener(Object listener) {
+    public void addListener(@NotNull Object listener) {
         listenerMethods.computeIfAbsent(listener, o -> new ArrayList<>()).addAll(Arrays.stream(listener.getClass().getDeclaredMethods()).filter(m -> m.isAnnotationPresent(Listener.class)).peek(m -> m.setAccessible(true)).toList());
     }
 
@@ -38,7 +38,7 @@ public final class EventNode {
         public static final EventNode INSTANCE = new EventNode();
     }
 
-    public <T> void fire(T event) {
+    public <T> void fire(@NotNull T event) {
         listenerMethods.forEach((o, methods) -> {
             methods.forEach(method -> {
                 try {
@@ -58,7 +58,7 @@ public final class EventNode {
         });
     }
 
-    public <T> EventListenerBuilder<T> addListener(Class<T> clazz) {
+    public @NotNull <T> EventListenerBuilder<T> addListener(@NotNull Class<T> clazz) {
         final EventListenerBuilder<T> builder = new EventListenerBuilder<>(clazz);
         listenerBuilders.add(builder);
         return builder;

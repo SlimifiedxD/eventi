@@ -1,5 +1,7 @@
 package org.slimecraft.eventi;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -11,23 +13,23 @@ import java.util.function.Predicate;
 public final class EventListenerBuilder<T> {
     private final EventListener<T> listener;
 
-    public EventListenerBuilder(EventListener<T> listener) {
+    public EventListenerBuilder(@NotNull EventListener<T> listener) {
         this.listener = listener;
     }
 
-    public EventListenerBuilder(Class<T> clazz) {
+    public EventListenerBuilder(@NotNull Class<T> clazz) {
         this(new EventListener<>(clazz));
     }
 
-    public void handle(Consumer<T> handler) {
+    public void handle(@NotNull Consumer<T> handler) {
         listener.addHandler(handler);
     }
 
-    public void filter(Predicate<T> filter) {
+    public void filter(@NotNull Predicate<T> filter) {
         listener.addFilter(filter);
     }
 
-    public EventListener<T> build() {
+    public @NotNull EventListener<T> build() {
         return listener;
     }
 }
