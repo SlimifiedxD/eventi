@@ -15,6 +15,8 @@ import java.lang.annotation.Target;
  *     // use the event
  * }
  *}
+ * Methods annotated with this annotation should only ever have one parameter, which is the type
+ * of the event.
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
