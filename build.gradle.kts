@@ -17,6 +17,23 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "org.slimecraft"
+            artifactId = "eventi"
+            version = "1.0"
+
+            from(components["java"])
+        }
+    }
+}
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
 tasks.test {
     useJUnitPlatform()
 }
