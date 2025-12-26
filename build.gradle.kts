@@ -1,5 +1,6 @@
 plugins {
-    id("java")
+    `java-library`
+    `maven-publish`
 }
 
 group = "org.example"

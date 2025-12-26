@@ -8,6 +8,13 @@ import java.lang.reflect.Method;
 import java.util.*;
 import java.util.function.Consumer;
 
+/**
+ * An event node is where events are fired: {@link #fire(Object)}
+ * and subscribed to: {@link #addListener(Class)}. The {@link #global()}
+ * method is provided for a convenient quick-and-dirty solution.
+ * Soon, however, event nodes will allow for children, meaning that
+ * events will be able to be scoped to certain nodes, allowing for cleaner code.
+ */
 public final class EventNode {
     private final List<EventListenerBuilder<?>> listenerBuilders;
     private final List<EventListener<?>> listeners;

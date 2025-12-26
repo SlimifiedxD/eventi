@@ -7,6 +7,14 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
+/**
+ * Represents a listener of an event. A handler will be executed when this listener receives
+ * the event, that is, when it is fired. Filters allow for keeping handlers tidy, only executing
+ * logic if it should be executed.
+ * One is typically constructed by using the {@link EventListenerBuilder} which is typically
+ * obtained through the {@link EventNode#addListener(Class)} method.
+ * @param <T> The type to listen to.
+ */
 public final class EventListener<T> {
     private Class<T> clazz;
     private final List<Consumer<T>> handlers;

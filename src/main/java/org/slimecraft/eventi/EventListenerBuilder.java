@@ -4,6 +4,10 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
+/**
+ * Builds an {@link EventListener}.
+ * @param <T> The type to use for the event listener.
+ */
 public final class EventListenerBuilder<T> {
     private final EventListener<T> listener;
 
