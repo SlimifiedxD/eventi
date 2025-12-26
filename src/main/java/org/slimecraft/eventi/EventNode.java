@@ -42,7 +42,7 @@ public final class EventNode {
             if (params.length != 1) {
                 throw new IllegalArgumentException("The method must have exactly 1 parameter");
             }
-            final EventListener<?> listenerToAdd = new EventListener<>(method.getParameterTypes()[0]);
+            final EventListener<?> listenerToAdd = new EventListener<>(params[0]);
             listenerToAdd.addHandler(t -> {
                 try {
                     method.invoke(listener, t);
